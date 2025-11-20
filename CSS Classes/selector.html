@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Selectors Practice</title>
+    <style>
+      /* Basic reset */
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Arial;
+        margin: 0;
+        background: #f5f7fb;
+        padding: 20px;
+      }
+      header,
+      footer {
+        background: #fff;
+        padding: 16px;
+        border-radius: 8px;
+        box-shadow: 0 6px 18px rgba(2, 6, 23, 0.04);
+        margin-bottom: 12px;
+      }
+      main {
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+      section {
+        background: #fff;
+        padding: 16px;
+        border-radius: 8px;
+        min-width: 240px;
+        box-shadow: 0 6px 18px rgba(2, 6, 23, 0.04);
+      }
+      h1 {
+        margin: 0 0 6px;
+      }
+      /* Element selector: style all paragraphs */
+      p {
+        color: #333;
+        line-height: 1.5;
+      }
+      /* Class selector: style elements with .highlight */
+      .highlight {
+        background: #f0f8ff;
+        padding: 6px;
+        border-radius: 6px;
+      }
+      /* ID selector: single element */
+      #special {
+        border: 2px dashed #1f78d1;
+        padding: 8px;
+      }
+      /* Attribute selector: input[type="email"] */
+      input[type="email"] {
+        padding: 8px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+      }
+      /* Combinators */
+      /* Child selector (>) styles only direct li children */
+      ul > li {
+        padding: 6px 0;
+        border-bottom: 1px solid #eee;
+      }
+      /* Adjacent sibling (+) styles the element immediately after h3 */
+      h3 + p {
+        color: #1f78d1;
+        font-weight: 600;
+      }
+      /* General sibling (~) styles all spans after an h3 */
+      h3 ~ span {
+        display: block;
+        color: #666;
+      }
+      /* Descendant selector (space) styles p inside .note */
+      .note p {
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <header><h1>CSS Selectors Practice</h1></header>
+    <main>
+      <section>
+        <h3>Element selector</h3>
+        <p>All &lt;p&gt; tags are styled by the element selector.</p>
+      </section>
+
+      <section class="highlight">
+        <h3>Class selector (.highlight)</h3>
+        <p>This section uses a class-based style to add a light background.</p>
+      </section>
+
+      <section id="special">
+        <h3>ID selector (#special)</h3>
+        <p>Only one element should use an ID on a page.</p>
+      </section>
+
+      <section>
+        <h3>Attribute selector</h3>
+        <p>Input below uses <code>input[type="email"]</code> selector:</p>
+        <input type="email" placeholder="email@example.com" />
+      </section>
+
+      <section>
+        <h3>Combinators</h3>
+        <ul>
+          <li>First item</li>
+          <li>Second item</li>
+          <li>Third item</li>
+        </ul>
+        <h3>Heading</h3>
+        <p>Paragraph immediately after h3 (+).</p>
+        <span>Sibling span (~) example 1</span>
+        <span>Sibling span example 2</span>
+        <div class="note">
+          <p>Descendant selector: paragraph inside .note</p>
+        </div>
+      </section>
+    </main>
+    <footer>Footer — selectors practice page</footer>
+  </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Combined Effects</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 28px;
+        font-family: Arial;
+        background: #f7f9fc;
+      }
+      .row {
+        display: flex;
+        gap: 14px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .example {
+        padding: 10px 16px;
+        border-radius: 8px;
+        border: none;
+        background: #1f78d1;
+        color: #fff;
+        cursor: pointer;
+        transition: all 0.28s ease;
+        box-shadow: 0 6px 18px rgba(31, 120, 209, 0.12);
+      }
+      .example:hover {
+        transform: scale(1.06);
+        background: #155fa8;
+        box-shadow: 0 20px 40px rgba(21, 95, 168, 0.18);
+      }
+      .example:active {
+        transform: scale(0.98);
+      }
+      .example:focus {
+        outline: 3px solid rgba(31, 120, 209, 0.12);
+        outline-offset: 3px;
+      }
+      .wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <h2>Combined Pseudo-classes, Transitions & Transforms</h2>
+      <div class="row">
+        <button class="example">Grow on Hover</button>
+        <button class="example" style="background: #ff6b6b">
+          Color + Scale
+        </button>
+        <button class="example" style="background: #00b894">
+          Shadow Emphasis
+        </button>
+      </div>
+      <div style="color: #666; text-align: center; margin-top: 8px">
+        Hover to scale; active to press; focus shows outline.
+      </div>
+    </div>
+  </body>
+</html>

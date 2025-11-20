@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>UI Components</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background: linear-gradient(135deg, #f0f4ff, #fdf6ff);
+        font-family: Arial;
+      }
+      .card {
+        background: #fff;
+        padding: 22px;
+        border-radius: 12px;
+        box-shadow: 0 14px 40px rgba(2, 6, 23, 0.08);
+        width: 420px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .search {
+        display: flex;
+        gap: 8px;
+      }
+      input[type="search"] {
+        flex: 1;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+      }
+      input[type="search"]:focus {
+        outline: 3px solid rgba(31, 120, 209, 0.12);
+        outline-offset: 3px;
+      }
+      .btn {
+        padding: 10px 12px;
+        border-radius: 8px;
+        border: none;
+        background: #1f78d1;
+        color: #fff;
+        cursor: pointer;
+      }
+      select {
+        padding: 8px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+      }
+      .row {
+        display: flex;
+        gap: 8px;
+      }
+      label {
+        font-size: 0.9rem;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <label>Search</label>
+      <div class="search">
+        <input type="search" placeholder="Search..." />
+        <button class="btn">Go</button>
+      </div>
+
+      <div class="row">
+        <button class="btn">Primary</button>
+        <button
+          style="background: #f3f4f6; color: #111; border: 1px solid #ddd"
+        >
+          Secondary
+        </button>
+        <select>
+          <option>Option 1</option>
+          <option>Option 2</option>
+        </select>
+      </div>
+
+      <div style="color: #666; font-size: 0.95rem">
+        Focused and hovered controls show outlines and highlights.
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Box-sizing Comparison</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial;
+        background: #f6f7fb;
+        padding: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+      .wrap {
+        display: flex;
+        gap: 18px;
+        flex-wrap: wrap;
+        max-width: 900px;
+        align-items: flex-start;
+      }
+      .box {
+        padding: 20px;
+        border: 6px solid #333;
+        border-radius: 8px;
+        width: 300px;
+      }
+      .default {
+        background: #ffe6e6;
+      } /* default box-sizing: content-box */
+      .borderbox {
+        background: #e6f7ff;
+        box-sizing: border-box;
+      } /* border-box */
+      .note {
+        max-width: 640px;
+        margin: 16px auto;
+        text-align: center;
+        color: #444;
+      }
+      @media (max-width: 700px) {
+        .wrap {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div style="text-align: center; margin-bottom: 12px">
+        <strong>Box-Sizing Comparison</strong>
+      </div>
+      <div class="wrap">
+        <div>
+          <div class="box default">
+            Default (content-box)<br /><small
+              >width:300px + padding + border increases total size</small
+            >
+          </div>
+        </div>
+        <div>
+          <div class="box borderbox">
+            With border-box<br /><small>width includes padding & border</small>
+          </div>
+        </div>
+      </div>
+      <p class="note">
+        When using <code>box-sizing: border-box;</code>, specified width
+        includes padding and border, making layout math easier on responsive
+        designs.
+      </p>
+    </div>
+  </body>
+</html>

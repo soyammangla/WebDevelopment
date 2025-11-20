@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Button Collection</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 28px;
+        font-family: Arial;
+        background: #f4f6fb;
+      }
+      h1 {
+        text-align: center;
+        margin-bottom: 14px;
+      }
+      .row {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .btn {
+        padding: 10px 16px;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 6px 18px rgba(2, 6, 23, 0.06);
+        transition: all 0.25s ease;
+      }
+      .primary {
+        background: #1f78d1;
+        color: #fff;
+      }
+      .primary:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 18px 36px rgba(31, 120, 209, 0.18);
+      }
+      .primary:active {
+        transform: translateY(-1px);
+      }
+      .secondary {
+        background: #f3f4f6;
+        color: #1f1f1f;
+      }
+      .outline {
+        background: transparent;
+        border: 2px solid #1f78d1;
+        color: #1f78d1;
+      }
+      .disabled {
+        background: #d8dbe0;
+        color: #888;
+        cursor: not-allowed;
+        box-shadow: none;
+      }
+      .btn:focus {
+        outline: 3px solid rgba(31, 120, 209, 0.18);
+        outline-offset: 3px;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+      }
+      .label {
+        font-size: 0.95rem;
+        color: #444;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Button Styles</h1>
+      <div class="label">Primary • Secondary • Outline • Disabled</div>
+      <div class="row">
+        <button class="btn primary">Primary</button>
+        <button class="btn secondary">Secondary</button>
+        <button class="btn outline">Outline</button>
+        <button class="btn disabled" disabled>Disabled</button>
+      </div>
+      <div style="text-align: center; color: #666; margin-top: 10px">
+        Use TAB to see <code>:focus</code> outline; click to see
+        <code>:active</code>.
+      </div>
+    </div>
+  </body>
+</html>

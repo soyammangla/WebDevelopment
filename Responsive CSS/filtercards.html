@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filter Cards with Animation</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        background: #f4f6fb;
+        padding: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+      .cards {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+        animation: fadeIn 1s ease forwards;
+      }
+      .card {
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        flex: 1 1 250px;
+        transition: transform 0.3s;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+      }
+      .card img {
+        width: 100%;
+        border-radius: 10px;
+        filter: grayscale(100%);
+        transition: all 0.4s;
+      }
+      .card:hover img {
+        filter: none;
+      }
+      .card:hover {
+        transform: translateY(-10px);
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @media (max-width: 800px) {
+        .cards {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cards">
+      <div class="card">
+        <img src="https://picsum.photos/id/1015/300/200" alt="" />
+        <h3>Profile 1</h3>
+      </div>
+      <div class="card">
+        <img src="https://picsum.photos/id/1016/300/200" alt="" />
+        <h3>Profile 2</h3>
+      </div>
+      <div class="card">
+        <img src="https://picsum.photos/id/1020/300/200" alt="" />
+        <h3>Profile 3</h3>
+      </div>
+    </div>
+  </body>
+</html>

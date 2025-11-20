@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Outline Form</title>
+
+    <style>
+      body {
+        font-family: Arial;
+        background: #f8f8f8;
+        padding: 30px;
+      }
+
+      form {
+        width: 300px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      input,
+      textarea {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        outline: 2px solid transparent;
+        transition: 0.3s;
+      }
+
+      input:focus,
+      textarea:focus {
+        outline-color: royalblue;
+        outline-offset: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2 style="text-align: center">Outline & Focus Demo</h2>
+
+    <form>
+      <input type="text" placeholder="Your Name" />
+      <input type="email" placeholder="Email" />
+      <textarea rows="4" placeholder="Message"></textarea>
+    </form>
+  </body>
+</html>

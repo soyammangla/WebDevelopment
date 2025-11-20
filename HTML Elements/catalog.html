@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Product Catalog</title>
+  </head>
+  <body>
+    <header>
+      <h1>Online Store — Product Catalog</h1>
+    </header>
+
+    <main>
+      <table border="1" title="Product listing table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Availability</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td rowspan="2">
+              <img src="#" alt="Smartphone" width="120" /><br />Smartphone X
+            </td>
+            <td>High performance smartphone with 6.5" display.</td>
+            <td>₹29,999</td>
+            <td>In Stock</td>
+          </tr>
+          <tr>
+            <!-- This row continues description for the product above (using rowspan) -->
+            <td colspan="2">Warranty: 1 year manufacturer warranty.</td>
+            <td>Limited Stock</td>
+          </tr>
+
+          <tr>
+            <td>
+              <img src="#" alt="Headphones" width="120" /><br />Studio
+              Headphones
+            </td>
+            <td>Over-ear, noise-isolating headphones.</td>
+            <td>₹4,499</td>
+            <td>Out of Stock</td>
+          </tr>
+
+          <tr>
+            <td>
+              <img src="#" alt="Coffee Maker" width="120" /><br />Coffee Maker
+              Pro
+            </td>
+            <td>Automatic drip coffee maker — 1.5L capacity.</td>
+            <td>₹6,999</td>
+            <td>In Stock</td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Online Store</p>
+    </footer>
+  </body>
+</html>

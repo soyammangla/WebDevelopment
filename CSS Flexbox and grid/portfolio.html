@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        background: #f3f3f3;
+        color: #222;
+      }
+
+      /* Header */
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+        background: #222;
+        color: white;
+      }
+
+      nav a {
+        color: white;
+        margin-left: 20px;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      /* Main Section */
+      .main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 50px;
+        gap: 40px;
+      }
+
+      .about {
+        flex: 1;
+        font-size: 1.1rem;
+        line-height: 1.6;
+      }
+
+      .img-box {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .img-box img {
+        width: 80%;
+        max-width: 350px;
+        border-radius: 10px;
+      }
+
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 15px;
+        background: #222;
+        color: white;
+        margin-top: 40px;
+      }
+
+      /* Responsive */
+      @media (max-width: 700px) {
+        .main {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        header {
+          flex-direction: column;
+          gap: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h2>Your Name</h2>
+
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">Projects</a>
+        <a href="#">Contact</a>
+      </nav>
+    </header>
+
+    <section class="main">
+      <div class="about">
+        <h2>About Me</h2>
+        <p>
+          Hello! I am a passionate developer skilled in creating web apps,
+          designs, and modern UI layouts. I love working with HTML, CSS,
+          JavaScript and building responsive websites.
+        </p>
+      </div>
+
+      <div class="img-box">
+        <img src="https://via.placeholder.com/350" alt="Profile Image" />
+      </div>
+    </section>
+
+    <footer>© 2025 Your Name — All Rights Reserved</footer>
+  </body>
+</html>

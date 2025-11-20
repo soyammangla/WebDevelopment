@@ -1,0 +1,27 @@
+<!-- security-form.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Form Security</title>
+  </head>
+  <body>
+    <h2>Secure Form</h2>
+    <form action="#" method="post" autocomplete="off">
+      <label>Username: <input type="text" name="username" required /></label
+      ><br /><br />
+      <label>Password: <input type="password" name="password" required /></label
+      ><br /><br />
+      <button type="submit">Submit</button>
+    </form>
+
+    <p>
+      <strong>Note:</strong> Turning off autocomplete can help prevent browsers
+      from storing or auto-filling sensitive credentials on shared or public
+      machines, reducing the chance that the next user sees or uses someone
+      else's saved credentials. However, it is not a substitute for secure
+      server-side protections (HTTPS, proper session handling, CSRF
+      protections).
+    </p>
+  </body>
+</html>

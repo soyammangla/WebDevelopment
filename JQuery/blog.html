@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog Posts</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  </head>
+  <body>
+    <button id="add">Add New Post</button>
+    <button id="prepend">Prepend Featured</button>
+    <button id="remove">Remove Last</button>
+
+    <div id="posts">
+      <div class="post">First Blog Post</div>
+    </div>
+
+    <script>
+      $(function () {
+        // 1 Add new
+        $("#add").click(() => {
+          $("#posts").append("<div class='post'>New Blog Post</div>");
+        });
+
+        // 2 Prepend featured
+        $("#prepend").click(() => {
+          $("#posts").prepend("<div class='post'>⭐ Featured Post</div>");
+        });
+
+        // 3 Remove last
+        $("#remove").click(() => {
+          $("#posts .post").last().remove();
+        });
+      });
+    </script>
+  </body>
+</html>

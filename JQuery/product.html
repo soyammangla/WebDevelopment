@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Q2 - Product Highlight</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+      :root {
+        --bg: #f5f7fb;
+        --card: #fff;
+        --accent: #2b7cff;
+        --fav: #ffb400;
+        --out: #ff6b6b;
+        --discount-badge: #e7f7ef;
+      }
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: var(--bg);
+        margin: 20px;
+      }
+      .wrap {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      h2 {
+        text-align: center;
+        margin-bottom: 18px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 16px;
+      }
+
+      .card {
+        background: var(--card);
+        padding: 12px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+        position: relative;
+        cursor: pointer;
+        transition: transform 0.12s ease, box-shadow 0.12s ease;
+        overflow: hidden;
+      }
+      .card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+      }
+
+      /* Click highlight */
+      .card.highlight {
+        outline: 4px solid rgba(43, 124, 255, 0.12);
+        box-shadow: 0 12px 22px rgba(43, 124, 255, 0.08);
+      }
+
+      /* Favorite selected */
+      .fav {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 20px;
+        cursor: pointer;
+        user-select: none;
+        transition: transform 0.12s ease;
+      }
+      .fav.selected {
+        color: var(--fav);
+        transform: scale(1.15);
+      }
+
+      .thumb {
+        height: 140px;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 6px;
+        background: #eee;
+      }
+      .title {
+        font-weight: 600;
+        margin: 10px 0 6px;
+      }
+      .price {
+        color: #333;
+        font-weight: 700;
+      }
+      .meta {
+        font-size: 13px;
+        color: #666;
+        margin-top: 6px;
+      }
+
+      .details {
+        display: none;
+        margin-top: 8px;
+        font-size: 13px;
+        color: #444;
+        border-top: 1px dashed #eee;
+        padding-top: 8px;
+      }
+
+      .btn-row {
+        display: flex;
+        gap: 8px;
+        margin-top: 10px;
+      }
+      button {
+        padding: 8px 10px;
+        border-radius: 6px;
+        border: 1px solid #ddd;
+        background: #fff;
+        cursor: pointer;
+        font-weight: 600;
+      }
+      .buy {
+        background: var(--accent);
+        color: #fff;
+        border-color: var(--accent);
+      }
+
+      /* Out of stock look using data attribute on card */
+      .card[data-stock="out"] {
+        opacity: 0.7;
+      }
+      .card[data-stock="out"] .stock-pill {
+        background: var(--out);
+        color: white;
+        padding: 4px 8px;
+        border-radius: 999px;
+        font-size: 12px;
+        display: inline-block;
+        margin-left: 6px;
+      }
+
+      /* Discount styling using attribute selector */
+      .card[data-discount] {
+        border: 2px dashed rgba(46, 204, 113, 0.12);
+      }
+      /* discount badge */
+      .card[data-discount]::before {
+        content: attr(data-discount) "% OFF";
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        background: var(--discount-badge);
+        color: #1f8f4a;
+        padding: 6px 8px;
+        border-radius: 6px;
+        font-weight: 700;
+        font-size: 12px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <h2>Product Showcase — Click / Hover / Favorite / Buy</h2>
+
+      <div class="grid">
+        <!-- Product 1: in stock, discounted -->
+        <div class="card" data-id="1" data-stock="in" data-discount="20">
+          <div class="fav" title="Toggle Favorite">☆</div>
+          <img
+            class="thumb"
+            src="https://picsum.photos/seed/p1/400/300"
+            alt="product 1"
+          />
+          <div class="title">Fjallraven Backpack</div>
+          <div class="price">$109.95</div>
+          <div class="meta">
+            <span class="stock-pill">In Stock</span>
+            <span class="meta-attr"> • Lightweight</span>
+          </div>
+
+          <div class="details">
+            <p>
+              <strong>Details:</strong> Durable canvas backpack with roomy
+              compartments.
+            </p>
+          </div>
+
+          <div class="btn-row">
+            <button class="info">Info</button>
+            <button class="buy">Buy</button>
+          </div>
+        </div>
+
+        <!-- Product 2: out of stock -->
+        <div class="card" data-id="2" data-stock="out">
+          <div class="fav" title="Toggle Favorite">☆</div>
+          <img
+            class="thumb"
+            src="https://picsum.photos/seed/p2/400/300"
+            alt="product 2"
+          />
+          <div class="title">Vintage Camera</div>
+          <div class="price">$249.00</div>
+          <div class="meta">
+            <span class="stock-pill">Out of Stock</span>
+            <span class="meta-attr"> • Limited Edition</span>
+          </div>
+
+          <div class="details">
+            <p>
+              <strong>Details:</strong> Retro-style camera with manual controls.
+            </p>
+          </div>
+
+          <div class="btn-row">
+            <button class="info">Info</button>
+            <button class="buy">Buy</button>
+          </div>
+        </div>
+
+        <!-- Product 3: in stock, no discount -->
+        <div class="card" data-id="3" data-stock="in">
+          <div class="fav" title="Toggle Favorite">☆</div>
+          <img
+            class="thumb"
+            src="https://picsum.photos/seed/p3/400/300"
+            alt="product 3"
+          />
+          <div class="title">Wireless Headphones</div>
+          <div class="price">$59.99</div>
+          <div class="meta">
+            <span class="stock-pill">In Stock</span>
+            <span class="meta-attr"> • 20h Battery</span>
+          </div>
+
+          <div class="details">
+            <p>
+              <strong>Details:</strong> Noise cancelling, comfortable earcups.
+            </p>
+          </div>
+
+          <div class="btn-row">
+            <button class="info">Info</button>
+            <button class="buy">Buy</button>
+          </div>
+        </div>
+
+        <!-- Product 4: in stock, discounted -->
+        <div class="card" data-id="4" data-stock="in" data-discount="10">
+          <div class="fav" title="Toggle Favorite">☆</div>
+          <img
+            class="thumb"
+            src="https://picsum.photos/seed/p4/400/300"
+            alt="product 4"
+          />
+          <div class="title">Smart Mug</div>
+          <div class="price">$29.95</div>
+          <div class="meta">
+            <span class="stock-pill">In Stock</span>
+            <span class="meta-attr"> • Temperature Control</span>
+          </div>
+
+          <div class="details">
+            <p>
+              <strong>Details:</strong> Keep drinks at the perfect temperature
+              for hours.
+            </p>
+          </div>
+
+          <div class="btn-row">
+            <button class="info">Info</button>
+            <button class="buy">Buy</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      $(function () {
+        // 1) Click on a product -> highlight background (toggle single highlight)
+        // If you want multiple highlights, remove logic that removes highlight from others.
+        $(".card").on("click", function (e) {
+          // prevent clicks from firing when clicking inner controls (fav, buttons)
+          if ($(e.target).closest(".fav, button").length) return;
+          $(".card").not(this).removeClass("highlight"); // single selection style
+          $(this).toggleClass("highlight");
+        });
+
+        // 2) Hover over product -> show additional product details
+        $(".card")
+          .on("mouseenter", function () {
+            $(this).find(".details").stop(true, true).slideDown(150);
+          })
+          .on("mouseleave", function () {
+            $(this).find(".details").stop(true, true).slideUp(120);
+          });
+
+        // 3) Favorite icon -> toggles "selected" class
+        $(".fav").on("click", function (e) {
+          e.stopPropagation(); // don't trigger card click
+          $(this).toggleClass("selected");
+          // change star char
+          $(this).text($(this).hasClass("selected") ? "★" : "☆");
+        });
+
+        // 4) Apply different styles to products with discounts using attribute selector
+        // (Handled via CSS [data-discount] and ::before badge). We'll also add small JS tooltip on hover.
+        $(".card[data-discount]").on("mouseenter", function () {
+          const d = $(this).attr("data-discount");
+          // show a quick console/info
+          // (visual badge already shown via CSS)
+          // you could also show a tooltip if needed
+        });
+
+        // 5) Show alert if product is out of stock (using data attribute)
+        // We'll handle Buy button click; show alert and prevent purchase if out.
+        $(".buy").on("click", function (e) {
+          e.stopPropagation();
+          const card = $(this).closest(".card");
+          const stock = card.attr("data-stock"); // "in" or "out"
+          const title = card.find(".title").text();
+
+          if (stock === "out") {
+            alert(`${title} is currently OUT OF STOCK. Please check later.`);
+            return;
+          }
+          // simulate purchase success
+          alert(`Added to cart: ${title}`);
+        });
+
+        // Extra: Info button shows alert with short details (and respects out-of-stock)
+        $(".info").on("click", function (e) {
+          e.stopPropagation();
+          const card = $(this).closest(".card");
+          const title = card.find(".title").text();
+          const price = card.find(".price").text();
+          const stock = card.attr("data-stock");
+          alert(
+            `${title}\nPrice: ${price}\nStatus: ${
+              stock === "in" ? "In Stock" : "Out of Stock"
+            }`
+          );
+        });
+
+        // Accessibility: keyboard focus -> show details (optional)
+        $(".card")
+          .attr("tabindex", 0)
+          .on("focus", function () {
+            $(this).find(".details").stop(true, true).slideDown(120);
+          })
+          .on("blur", function () {
+            $(this).find(".details").stop(true, true).slideUp(120);
+          });
+      });
+    </script>
+  </body>
+</html>

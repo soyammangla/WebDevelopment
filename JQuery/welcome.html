@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Welcome Greeting</title>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: #eef2f3;
+      }
+
+      .container {
+        background: white;
+        padding: 40px;
+        width: 400px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      }
+
+      h1 {
+        cursor: pointer;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 15px;
+        margin: 10px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 id="greeting">Welcome!</h1>
+
+      <button id="changeGreeting">Change Greeting</button>
+      <button id="toggleGreeting">Toggle Visibility</button>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        // 1. Time-based greeting
+        function setGreeting() {
+          let hour = new Date().getHours();
+          let greet = "";
+
+          if (hour < 12) greet = "Good Morning!";
+          else if (hour < 18) greet = "Good Afternoon!";
+          else greet = "Good Evening!";
+
+          $("#greeting").text(greet);
+        }
+
+        setGreeting(); // call on load
+
+        // 2. Change greeting to quote
+        $("#changeGreeting").click(function () {
+          $("#greeting").text("Keep pushing forward! 💪");
+        });
+
+        // 3. Toggle visibility
+        $("#toggleGreeting").click(function () {
+          $("#greeting").toggle();
+        });
+
+        // 4. Click greeting → alert
+        $("#greeting").click(function () {
+          alert("Greeting clicked!");
+        });
+      });
+    </script>
+  </body>
+</html>

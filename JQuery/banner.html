@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Offer Banner</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <style>
+      .banner {
+        width: 400px;
+        margin: 20px auto;
+        padding: 20px;
+        background: orange;
+        color: white;
+        text-align: center;
+      }
+      button {
+        margin: 5px;
+        padding: 8px 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="banner" id="banner1">🔥 Big Discount Today!</div>
+
+    <div style="text-align: center">
+      <button id="hide">Hide</button>
+      <button id="show">Show</button>
+      <button id="slide">Slide Toggle</button>
+      <button id="fade">Fade Toggle</button>
+    </div>
+
+    <script>
+      $(function () {
+        // Hide banner
+        $("#hide").click(() => $("#banner1").hide());
+
+        // Show banner
+        $("#show").click(() => $("#banner1").show());
+
+        // Slide toggle
+        $("#slide").click(() => $("#banner1").slideToggle());
+
+        // Fade toggle
+        $("#fade").click(() => $("#banner1").fadeToggle());
+
+        // Auto rotate every 5 sec
+        setInterval(function () {
+          $("#banner1").fadeOut(800).fadeIn(800);
+        }, 5000);
+      });
+    </script>
+  </body>
+</html>

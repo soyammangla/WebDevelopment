@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Task Manager</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      .task {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Task Manager</h2>
+
+    <select id="filter">
+      <option value="">All</option>
+      <option value="Low">Low Priority</option>
+      <option value="Medium">Medium Priority</option>
+      <option value="High">High Priority</option>
+      <option value="completed">Completed</option>
+    </select>
+
+    <div id="tasks"></div>
+
+    <script>
+      function loadTasks() {
+        let filter = $("#filter").val();
+        let url = "http://localhost:3000/tasks";
+
+        if (filter === "completed") {
+          url += "?completed=true";
+        } else if (filter !== "") {
+          url += "?priority=" + filter;
+        }
+
+        $.get(url, function (data) {
+          $("#tasks").empty();
+          data.forEach((t) => {
+            $("#tasks").append(`
+        <div class="task">
+          <input type="checkbox" ${
+            t.completed ? "checked" : ""
+          } onclick="toggle(${t.id}, this)">
+          <strong>${t.title}</strong> — ${t.priority}
+        </div>
+      `);
+          });
+        });
+      }
+
+      function toggle(id, box) {
+        $.ajax({
+          url: "http://localhost:3000/tasks/" + id,
+          method: "PATCH",
+          data: { completed: box.checked },
+        });
+      }
+
+      $("#filter").on("change", loadTasks);
+
+      loadTasks();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Employee Dashboard</title>
+    <style>
+      .row {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+      }
+      button {
+        padding: 4px 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Employee Status Dashboard</h2>
+    <div id="employees"></div>
+
+    <script>
+      function loadEmployees() {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://localhost:3000/employees");
+        xhr.onload = function () {
+          const data = JSON.parse(xhr.responseText);
+          const container = document.getElementById("employees");
+          container.innerHTML = "";
+
+          data.forEach((emp) => {
+            let row = document.createElement("div");
+            row.className = "row";
+            row.innerHTML = `
+        <span>${emp.name} (${emp.status})</span>
+        <button onclick="toggleStatus(${emp.id}, '${emp.status}', this)">Toggle</button>
+      `;
+            container.appendChild(row);
+          });
+        };
+        xhr.send();
+      }
+
+      function toggleStatus(id, currentStatus, btn) {
+        let newStatus = currentStatus === "active" ? "inactive" : "active";
+        btn.parentElement.querySelector("span").innerText = btn.parentElement
+          .querySelector("span")
+          .innerText.replace(currentStatus, newStatus);
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("PATCH", "http://localhost:3000/employees/" + id);
+        xhr.setRequestHeader("Content-type", "application/json");
+        xhr.onload = function () {
+          if (xhr.status !== 200) {
+            alert("Failed! Reverting...");
+            // revert UI
+            btn.parentElement.querySelector("span").innerText =
+              btn.parentElement
+                .querySelector("span")
+                .innerText.replace(newStatus, currentStatus);
+          }
+        };
+        xhr.send(JSON.stringify({ status: newStatus }));
+      }
+
+      loadEmployees();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Multi API Dashboard</title>
+    <style>
+      .box {
+        padding: 20px;
+        border: 1px solid #ddd;
+        margin: 10px 0;
+      }
+      .loading {
+        background: #eee;
+        height: 20px;
+        width: 150px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Dashboard</h2>
+
+    <div class="box" id="users"><div class="loading"></div></div>
+    <div class="box" id="orders"><div class="loading"></div></div>
+    <div class="box" id="products"><div class="loading"></div></div>
+
+    <p id="warning" style="color: red"></p>
+
+    <script>
+      Promise.all([
+        fetch("http://localhost:3000/users").then((r) => r.json()),
+        fetch("http://localhost:3000/orders").then((r) => r.json()),
+        fetch("http://localhost:3000/products").then((r) => r.json()),
+      ])
+        .then(([u, o, p]) => {
+          document.getElementById("users").innerHTML =
+            "Total Users: " + u.length;
+          document.getElementById("orders").innerHTML =
+            "Total Orders: " + o.length;
+          document.getElementById("products").innerHTML =
+            "Total Products: " + p.length;
+        })
+        .catch(() => {
+          document.getElementById("warning").innerText =
+            "Some data could not be loaded.";
+        });
+    </script>
+  </body>
+</html>
